@@ -8,6 +8,33 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
+    <section id="main">
+      <div id="timer">
+        <span id="remainTime">00:00</span>
+        <div id="player"></div>
+      </div>
+      <div id="targetBox">
+        <div id="statusCheckBox"></div>
+        <span id="target"></span>
+      </div>
+    </section>
+    <section id="list">
+      <div id="todoListPage">
+        <div id="doneTag"></div>
+        <div id="todoList">
+          <h1>To-Do List</h1>
+          <div class="items">
+            <div class="item">
+              <div class="checkBt"></div>
+              <div class="itemBox">
+                <span class="text"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="doneListPage"></div>
+    </section>
     <script src="/app.js"></script>
   </body>
 </html>
