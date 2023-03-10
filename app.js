@@ -8,7 +8,7 @@ function switchDisplay() {
   if (window.innerWidth > 1200) {
     if (listStatus == "open") {
       $("#list").css("position", "fixed");
-      $("#list").css("right", -400 + "px");
+      $("#list").css("right", -360 + "px");
       listStatus = "fold";
     } else {
       $("#list").css("position", "relative");
@@ -18,7 +18,7 @@ function switchDisplay() {
   } else if (window.innerWidth > 600 && window.innerWidth < 1200) {
     if (listStatus == "open") {
       $("#list").css("position", "fixed");
-      $("#list").css("right", -400 + "px");
+      $("#list").css("right", -360 + "px");
       listStatus = "fold";
     } else {
       $("#list").css("position", "absolute");
@@ -30,7 +30,7 @@ function switchDisplay() {
       $("#list").css("bottom", -500 + "px");
       listStatus = "fold";
     } else {
-      $("#list").css("bottom", 0 + "%");
+      $("#list").css("bottom", 10 + "%");
       listStatus = "open";
     }
   }

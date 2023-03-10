@@ -8,7 +8,7 @@
 body {
   width: 100vw;
   height: 100vh;
-  background-color: black;
+  background-color: rgb(40, 40, 40);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,10 +19,11 @@ body {
   height: 100%;
   margin: 100px;
   padding: 10vh 0;
-  background-color: red;
   flex-grow: 1;
   display: grid;
   grid-template-rows: 2fr 1fr;
+  align-items: flex-end;
+  justify-items: center;
   #timer {
     width: 100%;
     height: 100%;
@@ -30,7 +31,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: aquamarine;
     #remainTime {
       font-size: 14vmax;
       font-weight: 600;
@@ -54,17 +54,40 @@ body {
     }
   }
   #targetBox {
-    width: 100%;
-    height: 100%;
-    background-color: yellow;
-    border-radius: 50vw;
+    width: 80%;
+    height: 50%;
+    background-color: rgb(235, 185, 7);
+    border: 1px solid white;
+    border-radius: 10vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4%;
+    #statusCheckBox {
+      height: 70%;
+      aspect-ratio: 1 / 1;
+      background: rgb(40, 40, 40);
+      border: none;
+      border-radius: 50%;
+      i {
+        font-size: 5vmax;
+        position: relative;
+        top: -5px;
+        color: rgb(235, 185, 7);
+      }
+    }
+    #target {
+      font-size: 6vmin;
+      width: 80%;
+      height: fit-content;
+      text-align: center;
+    }
   }
 }
 
 #list {
   width: 480px;
   height: 80%;
-  background-color: red;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -75,56 +98,122 @@ body {
     border: none;
     i {
       font-size: 3rem;
-      color: yellow;
+      color: rgb(235, 185, 7);
     }
   }
   #todoListPage {
-    background-color: yellow;
-    width: 100%;
+    background-color: rgb(235, 185, 7);
+    border-radius: 50px 20px 100px 20px;
+    width: 80%;
     height: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow-y: hidden;
     h1 {
-      font-size: 4rem;
+      font-size: 2rem;
       text-align: center;
       width: 85%;
       border-bottom: 1px solid black;
-      padding: 10px;
+      padding: 28px;
     }
     #itemList {
-      background-color: red;
-      width: 80%;
+      width: 85%;
       .item {
         display: flex;
+        justify-content: space-between;
         align-items: center;
+        padding: 10px 0;
         .checkBt {
-          width: 10px;
-          height: 10px;
-          background-color: aqua;
+          background: none;
+          border: none;
+          i {
+            font-size: 1.8rem;
+            position: relative;
+            top: -3px;
+          }
         }
         .itemBox {
           display: flex;
           align-items: center;
+          justify-content: space-between;
+          width: 86%;
+          border-bottom: 1px solid black;
+          padding: 10px;
           .text {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
+          }
+          .textBts {
+            display: flex;
+            gap: 10px;
+            height: 100%;
+            button {
+              background: none;
+              border: none;
+              .bi-play-fill {
+                font-size: 1.8rem;
+              }
+              .bi-trash-fill {
+                font-size: 1.2rem;
+                position: relative;
+                top: 3px;
+              }
+            }
+          }
+        }
+        .addBt {
+          background: none;
+          border: none;
+          i {
+            font-size: 1.2rem;
           }
         }
       }
     }
     #addNewItem {
-      background-color: rgb(175, 43, 43);
-      width: 80%;
+      width: 85%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      .addBt {
+        background: none;
+        border: none;
+        i {
+          font-size: 1.8rem;
+          color: aliceblue;
+        }
+      }
+      .itemBox {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 86%;
+        border-bottom: 1px solid white;
+        padding: 10px;
+        .text {
+          font-size: 1rem;
+          color: aliceblue;
+        }
+        button {
+          background: none;
+          border: none;
+          i {
+            font-size: 1.2rem;
+            position: relative;
+            top: 3px;
+            color: aliceblue;
+          }
+        }
+      }
     }
   }
 }
 
 @media (max-width: 1200px) and (min-width: 600px) {
   #list {
-    background-color: aquamarine;
     position: fixed;
-    right: -400px;
+    right: -360px;
   }
 }
 
@@ -140,12 +229,10 @@ body {
     height: 600px;
     margin-top: 50px;
     flex-grow: 0;
-    background-color: bisque;
   }
 
   #list {
     width: 90vw;
-    background-color: rgb(136, 127, 255);
     position: fixed;
     bottom: -500px;
   }
