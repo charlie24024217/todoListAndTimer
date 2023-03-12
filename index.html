@@ -20,12 +20,15 @@
   <body>
     <section id="main">
       <div id="timer">
-        <span id="remainTime">00:00</span>
+        <span id="timeText"></span>
         <div id="player">
-          <button>
+          <button id="playBt">
             <i class="bi bi-play-fill"></i>
           </button>
-          <button>
+          <button id="pauseBt">
+            <i class="bi bi-pause-fill"></i>
+          </button>
+          <button id="stopBt">
             <i class="bi bi-stop-fill"></i>
           </button>
         </div>
@@ -45,24 +48,7 @@
       </button>
       <div id="todoListPage">
         <h1>To-Do List</h1>
-        <div class="itemList">
-          <div class="item">
-            <button class="checkBt">
-              <i class="bi bi-circle"></i>
-            </button>
-            <div class="itemBox">
-              <span class="text">完成番茄鐘</span>
-              <div class="textBts">
-                <button class="startBt">
-                  <i class="bi bi-play-fill"></i>
-                </button>
-                <button class="trashBt">
-                  <i class="bi bi-trash-fill"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="itemList"></div>
         <div id="addNewItem">
           <button id="addBt">
             <i class="bi bi-plus-circle-fill"></i>
@@ -85,6 +71,9 @@
         <div id="doneItemList"></div>
       </div>
     </section>
+    <button id="listClose">
+      <i class="bi bi-arrow-bar-right"></i>
+    </button>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./app.js"></script>
   </body>

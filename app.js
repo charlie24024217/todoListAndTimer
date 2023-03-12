@@ -1,42 +1,122 @@
 let list = document.querySelector("#list");
+let player = document.getElementById("player");
+let counter;
+let setTime;
+let targetTime;
+let remainTime = 25 * 60;
+let timeText = document.getElementById("timeText");
+function renderTime() {
+  let min = Math.floor(remainTime / 60)
+    .toString()
+    .padStart(2, "0");
+  let sec = Math.floor(remainTime % 60)
+    .toString()
+    .padStart(2, "0");
+  timeText.innerHTML = `${min}:${sec}`;
+}
+renderTime();
+
+function checkTime() {
+  let currentTime = new Date().getTime();
+  let diffsec = Math.round((currentTime - setTime) / 1000);
+  remainTime = targetTime - diffsec;
+
+  if (remainTime > 0) {
+    renderTime();
+  } else {
+    clearInterval(counter);
+    remainTime = 25 * 60;
+  }
+}
+
+let playBt = document.getElementById("playBt");
+let pauseBt = document.getElementById("pauseBt");
+let stopBt = document.getElementById("stopBt");
+
+playBt.addEventListener("click", () => {
+  setTime = new Date().getTime();
+  targetTime = remainTime;
+  counter = setInterval(() => {
+    checkTime();
+  }, 1000);
+
+  playBt.style.display = "none";
+  pauseBt.style.display = "block";
+  stopBt.style.display = "block";
+});
+
+pauseBt.addEventListener("click", () => {
+  clearInterval(counter);
+
+  pauseBt.style.display = "none";
+  playBt.style.display = "block";
+});
+
+stopBt.addEventListener("click", () => {
+  clearInterval(counter);
+  if (
+    target.querySelector(".item").querySelector(".text").innerText == "休息時間"
+  ) {
+    remainTime = 25 * 60;
+    target.querySelector(".item").querySelector(".text").innerText =
+      "選擇新目標";
+    player.style.display = "none";
+  } else {
+    remainTime = 25 * 60;
+    // target.querySelector(".item").querySelector(".text").innerText = "休息時間";
+    // statusCheckBox.style.display = "none";
+  }
+  renderTime();
+
+  playBt.style.display = "block";
+  pauseBt.style.display = "none";
+  stopBt.style.display = "none";
+});
 
 //讓清單可以折疊(待修正)
-// let listStatus = "fold";
-// list.addEventListener("click", () => {
-//   switchListDisplay();
-// });
+let listClose = document.getElementById("listClose");
+let listStatus = "open";
+listClose.addEventListener("click", () => {
+  switchListDisplay();
+});
 
-// function switchListDisplay() {
-//   if (window.innerWidth > 1200) {
-//     if (listStatus == "open") {
-//       $("#list").css("position", "fixed");
-//       $("#list").css("right", -360 + "px");
-//       listStatus = "fold";
-//     } else {
-//       $("#list").css("position", "relative");
-//       $("#list").css("right", 0);
-//       listStatus = "open";
-//     }
-//   } else if (window.innerWidth > 600 && window.innerWidth < 1200) {
-//     if (listStatus == "open") {
-//       $("#list").css("position", "fixed");
-//       $("#list").css("right", -360 + "px");
-//       listStatus = "fold";
-//     } else {
-//       $("#list").css("position", "absolute");
-//       $("#list").css("right", 50);
-//       listStatus = "open";
-//     }
-//   } else {
-//     if (listStatus == "open") {
-//       $("#list").css("bottom", -500 + "px");
-//       listStatus = "fold";
-//     } else {
-//       $("#list").css("bottom", 10 + "%");
-//       listStatus = "open";
-//     }
-//   }
-// }
+function switchListDisplay() {
+  if (window.innerWidth > 1200) {
+    if (listStatus == "open") {
+      $("#list").css("position", "fixed");
+      $("#list").css("right", -500 + "px");
+      listStatus = "fold";
+      listClose.style.transform = "rotate(180deg)";
+    } else {
+      $("#list").css("position", "relative");
+      $("#list").css("right", 4 + "vw");
+      listStatus = "open";
+      listClose.style.transform = "rotate(0)";
+    }
+  } else if (window.innerWidth > 600 && window.innerWidth < 1200) {
+    if (listStatus == "open") {
+      $("#list").css("position", "fixed");
+      $("#list").css("right", -90 + "vw");
+      listStatus = "fold";
+      listClose.style.transform = "rotate(180deg)";
+    } else {
+      $("#list").css("position", "absolute");
+      $("#list").css("right", 30);
+      listStatus = "open";
+      listClose.style.transform = "rotate(0)";
+    }
+  } else {
+    if (listStatus == "open") {
+      $("#list").css("bottom", -100 + "vh");
+      listStatus = "fold";
+      listClose.style.transform = "rotate(-90deg)";
+    } else {
+      $("#list").css("bottom", 16 + "%");
+      listStatus = "open";
+      listClose.style.transform = "rotate(90deg)";
+    }
+  }
+}
 
 //清單切換
 let switchBt = document.getElementById("switchBt");
@@ -212,8 +292,6 @@ cancelBt.addEventListener("click", () => {
   addNewItemInput.value = "";
 });
 
-setItemBt(checkBt, startBt, trashBt);
-
 function checkTargetBox(e) {
   let text = target.querySelector(".item").querySelector(".text");
   if (text.innerText !== "選擇新目標" && text.innerText !== "休息時間") {
@@ -232,8 +310,44 @@ function checkTargetBox(e) {
       ).innerText;
   }
   statusCheckBox.style.display = "block";
+  player.style.display = "flex";
 }
 
 statusCheckBox.addEventListener("click", (e) => {
   moveDone2(e);
+  playBt.style.display = "block";
+  pauseBt.style.display = "none";
+  stopBt.style.display = "none";
+  clearInterval(counter);
+  remainTime = 5 * 60;
+  renderTime();
 });
+
+let initList = ["完成番茄鐘", "報名培訓營", "遛狗"];
+function addNewItemInit(i) {
+  let newItem = document.createElement("div");
+  newItem.classList.add("item");
+  newItem.innerHTML = `<button class="checkBt">
+              <i class="bi bi-circle"></i>
+            </button>
+            <div class="itemBox">
+              <span class="text">${initList[i]}</span>
+              <div class="textBts">
+                <button class="startBt">
+                  <i class="bi bi-play-fill"></i>
+                </button>
+                <button class="trashBt">
+                  <i class="bi bi-trash-fill"></i>
+                </button>
+              </div>
+            </div>`;
+  let checkBt = newItem.querySelector(".checkBt");
+  let startBt = newItem.querySelector(".startBt");
+  let trashBt = newItem.querySelector(".trashBt");
+  setItemBt(checkBt, startBt, trashBt);
+
+  itemList.appendChild(newItem);
+}
+for (let i = 0; i < initList.length; i++) {
+  addNewItemInit(i);
+}
