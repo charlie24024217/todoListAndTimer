@@ -24,8 +24,13 @@ function checkTime() {
   if (remainTime > 0) {
     renderTime();
   } else {
+    renderTime();
     clearInterval(counter);
     remainTime = 25 * 60;
+
+    playBt.style.display = "block";
+    pauseBt.style.display = "none";
+    stopBt.style.display = "none";
   }
 }
 
