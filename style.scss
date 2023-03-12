@@ -60,12 +60,17 @@ body {
     border: 1px solid white;
     border-radius: 10vw;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 0 4%;
     #statusCheckBox {
       background: none;
       border: none;
+      display: none;
+      opacity: 0.3;
+      &:hover {
+        opacity: 1;
+      }
       i {
         font-size: 5vmax;
         position: relative;
@@ -73,11 +78,13 @@ body {
         color: rgb(40, 40, 40);
       }
     }
-    #target {
-      font-size: 6vmin;
+    .item {
       width: 80%;
       height: fit-content;
       text-align: center;
+      .text {
+        font-size: 6vmin;
+      }
     }
   }
 }
