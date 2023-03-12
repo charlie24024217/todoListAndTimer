@@ -64,16 +64,13 @@ body {
     align-items: center;
     padding: 0 4%;
     #statusCheckBox {
-      height: 70%;
-      aspect-ratio: 1 / 1;
-      background: rgb(40, 40, 40);
+      background: none;
       border: none;
-      border-radius: 50%;
       i {
         font-size: 5vmax;
         position: relative;
         top: -5px;
-        color: rgb(235, 185, 7);
+        color: rgb(40, 40, 40);
       }
     }
     #target {
@@ -98,7 +95,7 @@ body {
     border: none;
     i {
       font-size: 3rem;
-      color: rgb(235, 185, 7);
+      color: rgb(235, 94, 7);
     }
   }
   #todoListPage {
@@ -117,7 +114,7 @@ body {
       border-bottom: 1px solid black;
       padding: 28px;
     }
-    #itemList {
+    .itemList {
       width: 85%;
       .item {
         display: flex;
@@ -144,28 +141,24 @@ body {
             font-size: 1.2rem;
           }
           .textBts {
-            display: flex;
-            gap: 10px;
-            height: 100%;
+            display: block;
+            position: relative;
             button {
               background: none;
               border: none;
               .bi-play-fill {
+                position: absolute;
+                right: 28px;
+                top: -12px;
                 font-size: 1.8rem;
               }
               .bi-trash-fill {
                 font-size: 1.2rem;
-                position: relative;
-                top: 3px;
+                position: absolute;
+                right: 0;
+                top: -2px;
               }
             }
-          }
-        }
-        .addBt {
-          background: none;
-          border: none;
-          i {
-            font-size: 1.2rem;
           }
         }
       }
@@ -176,7 +169,7 @@ body {
       justify-content: space-between;
       align-items: center;
       padding: 10px 0;
-      .addBt {
+      #addBt {
         background: none;
         border: none;
         i {
@@ -184,25 +177,80 @@ body {
           color: aliceblue;
         }
       }
-      .itemBox {
-        display: flex;
+      #newItemBox {
+        display: none;
         align-items: center;
         justify-content: space-between;
         width: 86%;
-        border-bottom: 1px solid white;
         padding: 10px;
+        border-bottom: 1px solid white;
         .text {
+          font-size: 1rem;
+          color: aliceblue;
+        }
+        input {
+          background: none;
+          border: none;
+          outline: none;
           font-size: 1rem;
           color: aliceblue;
         }
         button {
           background: none;
           border: none;
+          position: relative;
           i {
             font-size: 1.2rem;
-            position: relative;
-            top: 3px;
+            position: absolute;
+            right: 0;
+            top: -14px;
             color: aliceblue;
+          }
+        }
+      }
+    }
+  }
+  #doneListPage {
+    display: none;
+    background-color: rgb(235, 94, 7);
+    border-radius: 50px 20px 100px 20px;
+    width: 80%;
+    height: 90%;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: hidden;
+    h1 {
+      font-size: 2rem;
+      text-align: center;
+      width: 85%;
+      border-bottom: 1px solid black;
+      padding: 28px;
+    }
+    #doneItemList {
+      width: 85%;
+      .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        .checkBt {
+          background: none;
+          border: none;
+          i {
+            font-size: 1.8rem;
+            position: relative;
+            top: -3px;
+          }
+        }
+        .itemBox {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 86%;
+          border-bottom: 1px solid black;
+          padding: 10px;
+          .text {
+            font-size: 1.2rem;
           }
         }
       }

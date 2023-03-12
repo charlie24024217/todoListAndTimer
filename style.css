@@ -66,17 +66,14 @@ body {
   padding: 0 4%;
 }
 #main #targetBox #statusCheckBox {
-  height: 70%;
-  aspect-ratio: 1/1;
-  background: rgb(40, 40, 40);
+  background: none;
   border: none;
-  border-radius: 50%;
 }
 #main #targetBox #statusCheckBox i {
   font-size: 5vmax;
   position: relative;
   top: -5px;
-  color: rgb(235, 185, 7);
+  color: rgb(40, 40, 40);
 }
 #main #targetBox #target {
   font-size: 6vmin;
@@ -101,7 +98,7 @@ body {
 }
 #list #switchBt i {
   font-size: 3rem;
-  color: rgb(235, 185, 7);
+  color: rgb(235, 94, 7);
 }
 #list #todoListPage {
   background-color: rgb(235, 185, 7);
@@ -120,25 +117,25 @@ body {
   border-bottom: 1px solid black;
   padding: 28px;
 }
-#list #todoListPage #itemList {
+#list #todoListPage .itemList {
   width: 85%;
 }
-#list #todoListPage #itemList .item {
+#list #todoListPage .itemList .item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
 }
-#list #todoListPage #itemList .item .checkBt {
+#list #todoListPage .itemList .item .checkBt {
   background: none;
   border: none;
 }
-#list #todoListPage #itemList .item .checkBt i {
+#list #todoListPage .itemList .item .checkBt i {
   font-size: 1.8rem;
   position: relative;
   top: -3px;
 }
-#list #todoListPage #itemList .item .itemBox {
+#list #todoListPage .itemList .item .itemBox {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -146,32 +143,28 @@ body {
   border-bottom: 1px solid black;
   padding: 10px;
 }
-#list #todoListPage #itemList .item .itemBox .text {
+#list #todoListPage .itemList .item .itemBox .text {
   font-size: 1.2rem;
 }
-#list #todoListPage #itemList .item .itemBox .textBts {
-  display: flex;
-  gap: 10px;
-  height: 100%;
+#list #todoListPage .itemList .item .itemBox .textBts {
+  display: block;
+  position: relative;
 }
-#list #todoListPage #itemList .item .itemBox .textBts button {
+#list #todoListPage .itemList .item .itemBox .textBts button {
   background: none;
   border: none;
 }
-#list #todoListPage #itemList .item .itemBox .textBts button .bi-play-fill {
+#list #todoListPage .itemList .item .itemBox .textBts button .bi-play-fill {
+  position: absolute;
+  right: 28px;
+  top: -12px;
   font-size: 1.8rem;
 }
-#list #todoListPage #itemList .item .itemBox .textBts button .bi-trash-fill {
+#list #todoListPage .itemList .item .itemBox .textBts button .bi-trash-fill {
   font-size: 1.2rem;
-  position: relative;
-  top: 3px;
-}
-#list #todoListPage #itemList .item .addBt {
-  background: none;
-  border: none;
-}
-#list #todoListPage #itemList .item .addBt i {
-  font-size: 1.2rem;
+  position: absolute;
+  right: 0;
+  top: -2px;
 }
 #list #todoListPage #addNewItem {
   width: 85%;
@@ -180,35 +173,90 @@ body {
   align-items: center;
   padding: 10px 0;
 }
-#list #todoListPage #addNewItem .addBt {
+#list #todoListPage #addNewItem #addBt {
   background: none;
   border: none;
 }
-#list #todoListPage #addNewItem .addBt i {
+#list #todoListPage #addNewItem #addBt i {
   font-size: 1.8rem;
   color: aliceblue;
 }
-#list #todoListPage #addNewItem .itemBox {
+#list #todoListPage #addNewItem #newItemBox {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  width: 86%;
+  padding: 10px;
+  border-bottom: 1px solid white;
+}
+#list #todoListPage #addNewItem #newItemBox .text {
+  font-size: 1rem;
+  color: aliceblue;
+}
+#list #todoListPage #addNewItem #newItemBox input {
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: aliceblue;
+}
+#list #todoListPage #addNewItem #newItemBox button {
+  background: none;
+  border: none;
+  position: relative;
+}
+#list #todoListPage #addNewItem #newItemBox button i {
+  font-size: 1.2rem;
+  position: absolute;
+  right: 0;
+  top: -14px;
+  color: aliceblue;
+}
+#list #doneListPage {
+  display: none;
+  background-color: rgb(235, 94, 7);
+  border-radius: 50px 20px 100px 20px;
+  width: 80%;
+  height: 90%;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: hidden;
+}
+#list #doneListPage h1 {
+  font-size: 2rem;
+  text-align: center;
+  width: 85%;
+  border-bottom: 1px solid black;
+  padding: 28px;
+}
+#list #doneListPage #doneItemList {
+  width: 85%;
+}
+#list #doneListPage #doneItemList .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+#list #doneListPage #doneItemList .item .checkBt {
+  background: none;
+  border: none;
+}
+#list #doneListPage #doneItemList .item .checkBt i {
+  font-size: 1.8rem;
+  position: relative;
+  top: -3px;
+}
+#list #doneListPage #doneItemList .item .itemBox {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 86%;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid black;
   padding: 10px;
 }
-#list #todoListPage #addNewItem .itemBox .text {
-  font-size: 1rem;
-  color: aliceblue;
-}
-#list #todoListPage #addNewItem .itemBox button {
-  background: none;
-  border: none;
-}
-#list #todoListPage #addNewItem .itemBox button i {
+#list #doneListPage #doneItemList .item .itemBox .text {
   font-size: 1.2rem;
-  position: relative;
-  top: 3px;
-  color: aliceblue;
 }
 
 @media (max-width: 1200px) and (min-width: 600px) {
